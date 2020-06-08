@@ -1,0 +1,26 @@
+{
+  "name": "bike-tracker",
+  "version": "1.0.0",
+  "description": "app to track bike activity",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalaggv2/bike-tracker.git"
+  },
+  "keywords": [
+    "biking"
+  ],
+  "author": "Angela GG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalaggv2/bike-tracker/issues"
+  },
+  "homepage": "https://github.com/lalaggv2/bike-tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.26.0"
+  }
+}
