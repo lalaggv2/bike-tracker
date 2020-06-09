@@ -13,6 +13,126 @@
     <style></style>
   </head>
   <body>
+    <!-- As a link -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+    </nav>
+    <main class="container mt-5">
+      <!-- As a heading -->
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button
+                class="btn btn-link"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Track a Bike Ride
+              </button>
+            </h2>
+          </div>
+
+          <div
+            id="collapseOne"
+            class="collapse show"
+            aria-labelledby="headingOne"
+            data-parent="#accordionExample"
+          >
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="mileage">Mileage</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="mileage"
+                    aria-describedby="mileageHelp"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >Enter lenght of ride in miles up to 1 decimal.</small
+                  >
+                </div>
+               
+                <div class="form-group">
+                  <label for="duration">Mileage</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="duration"
+                    aria-describedby="durationHelp"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >Enter lenght of ride in minutes using close whole number</small
+                  >
+                </div>
+                  
+                <div class="form-group">
+                  <label for="mileage">Date of Ride</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="date"
+                    aria-describedby="dateHelp"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >Choose the date of your ride.</small
+                  >
+                </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Track Ride</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button
+                class="btn btn-link collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Collapsible Group Item #2
+              </button>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- activity form -->
+    <section id="mileage-graph">
+      <div class="jumbotron mb-5">
+        <div id='mileage-highchart'>
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+      <!-- graph for mileage -->
+    </section>
+    <
+
+    <section id="duration-graph">
+      <div class="jumbotron mb-5">
+        <div id='duration-highchart'>
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+      <!-- graph for duration -->
+    </section>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
