@@ -112,14 +112,7 @@
       <div class="jumbotron mb-5">
         <div id='duration-highchart'>
         <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
-      <!-- graph for duration -->
-    </section>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -135,6 +128,14 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+      <!-- graph for duration -->
+    </section>
+    
     <script>
 const loadGraphs = () => {
 loadDurationGraphs();
@@ -144,6 +145,7 @@ loadMileageGraphs();
 }
 
 const loadDurationGraphs = () => {};
+// same as the other
 
 const loadMileageGraphs = () => {
   //paste code from \highcharts
@@ -159,7 +161,7 @@ const loadMileageGraphs = () => {
                 zoomType: 'x'
             },
             title: {
-                text: 'USD to EUR exchange rate over time'
+                text: 'Bike rides over time'
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
@@ -170,7 +172,7 @@ const loadMileageGraphs = () => {
             },
             yAxis: {
                 title: {
-                    text: 'Exchange rate'
+                    text: 'Mileage'
                 }
             },
             legend: {
