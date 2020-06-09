@@ -14,12 +14,13 @@
   </head>
   <body>
     <!-- As a link -->
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Bike Activity Tracker</a>
     </nav>
     <main class="container mt-5">
-      <!-- As a heading -->
-      <div class="accordion" id="accordionExample">
+      <!-- Activity Form-->
+      <section id="activity-form" class='mb-5'>
+      <div class="accordion" id="act-form-accordion">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
@@ -43,7 +44,7 @@
             data-parent="#accordionExample"
           >
             <div class="card-body">
-              <form>
+              <form id='activity-form'>
                 <div class="form-group">
                   <label for="mileage">Mileage</label>
                   <input
@@ -88,27 +89,13 @@
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button
-                class="btn btn-link collapsed"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                Collapsible Group Item #2
-              </button>
-            </h2>
-          </div>
-        </div>
+ 
+            
       </div>
     </main>
 
     <!-- activity form -->
-    <section id="mileage-graph">
+    <section id="mileage-graph"  class='mb-5'>
       <div class="jumbotron mb-5">
         <div id='mileage-highchart'>
         <h1 class="display-4">Hello, world!</h1>
@@ -148,5 +135,129 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script>
+const loadGraphs = () => {
+loadDurationGraphs();
+loadMileageGraphs();
+
+  console.log("graphs loaded");
+}
+
+const loadDurationGraphs = () => {};
+
+const loadMileageGraphs = () => {
+  //paste code from \highcharts
+  axios.get('/api/graphs/mileage').then((response) => {
+    const data = response.data;
+  });
+  Highcharts.getJSON(
+    'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json',
+    function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'USD to EUR exchange rate over time'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'line',
+                name: 'Mileage',
+                data: data
+            }]
+        });
+    }
+);
+
+
+
+
+
+};
+
+// when our page loads, load the graphs initially
+$(document).ready(() => {
+  loadGraphs();
+})
+
+//on submit event for the form
+$('#activity-form').on('submit', (event) => {
+  event.preventDefault();
+})
+
+//-create an activity object
+
+const newActivity = {
+  mileage: $('#mileage').val(),
+  duration: $('#duration').val(),
+  date: $('#date').val(),
+};
+
+//-POST activity data
+axios.post('api/activities', newActivity).then((response) => {
+console.log(response)
+alert('activity tracked successfully!');
+$('#mileage').val("");
+$('#duration').val("");
+$('#date').val("");
+//when response, display message to user htat activity was tracked
+})
+
+//TODO reload the graphs
+loadGraphs();
+
+.catch((err) => {
+  const message = err.response.data.message;
+  console.log('message', message);
+  console.log('error', err.data);
+  alert(message);
+})
+
+
+
+    </script>
   </body>
 </html>
